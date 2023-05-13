@@ -20,7 +20,7 @@ idP Zero = Zero
 idP (Succ m) = Succ (id m)
 
 idR :: Nat -> Nat
-idR m = recNat Zero (\_ y -> Succ y) m 
+idR m = recNat Zero (\_ y -> Succ y) m
 
 --constant functions
 constP :: Nat -> Nat
@@ -44,7 +44,7 @@ multR m n = recNat Zero (\_ y -> addR n y) m
 expP :: Nat -> Nat -> Nat
 expP Zero _ = Zero
 expP _ Zero = Succ Zero
-expP m (Succ n) = multR m (expP m n) 
+expP m (Succ n) = multR m (expP m n)
 
 expR :: Nat -> Nat -> Nat
 expR m n = recNat (Succ Zero) (\_ y -> multR m y) n
@@ -56,3 +56,12 @@ factP (Succ m) = multR (Succ m) (factP m)
 
 factR :: Nat -> Nat
 factR m = recNat (Succ Zero) (\x y -> multR (addR x (Succ Zero)) y) m
+
+--predecessor function
+predP :: Nat -> Nat
+predP Zero = Zero
+predP (Succ Zero) = Zero
+predP (Succ m) = Succ (predP m)
+
+predR :: Nat -> Nat
+predR m = recNat Zero (\x _ -> x) m
