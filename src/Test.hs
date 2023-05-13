@@ -15,10 +15,20 @@ naturalToNat 0 = Zero
 naturalToNat n = Succ (naturalToNat (n-1))
 
 prop_idR :: Natural -> Bool
-prop_idR n = natToNatural (idR (Succ n')) == natToNatural (Succ n')
-  where
-  n' :: Nat
-  n' = naturalToNat n
+prop_idR n = natToNatural (idR (naturalToNat n))  == n
+
+
+prop_constR :: Natural -> Bool
+prop_constR n = natToNatural (constR (naturalToNat n)) == natToNatural (Succ Zero)
+
+prop_multR :: Natural -> Natural -> Bool
+prop_multR m n = natToNatural (multR (naturalToNat m) (naturalToNat n)) == m * n
+
+
 
 main :: IO()
-main = quickCheck prop_idR
+main = do
+  quickCheck prop_idR
+  quickCheck prop_constR
+  quickCheck prop_multR
+
