@@ -65,3 +65,20 @@ predP (Succ m) = Succ (predP m)
 
 predR :: Nat -> Nat
 predR m = recNat Zero (\x _ -> x) m
+
+
+--comparison operator for datatype nat
+(\\) :: Nat -> Nat -> Bool
+(Succ (Succ m)) \\ (Succ n) = True
+
+--truncated subtraction function
+subR :: Nat -> Nat -> Nat
+subR m n = recNat m (\_ y -> predR y) n
+
+
+
+
+
+
+
+
