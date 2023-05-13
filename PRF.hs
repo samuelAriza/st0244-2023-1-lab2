@@ -41,16 +41,10 @@ multR m n = recNat Zero (\_ y -> addR n y) m
 
 
 --exponentiation function
-exp :: Nat -> Nat -> Nat
-exp Zero _ = Zero
-exp _ Zero = Succ Zero
+expP :: Nat -> Nat -> Nat
+expP Zero _ = Zero
+expP _ Zero = Succ Zero
+expP m (Succ n) = multR m (expP m n) 
 
-
-
-
-
-
-
-
-
-
+expR :: Nat -> Nat -> Nat
+expR m n = recNat (Succ Zero) (\_ y -> multR m y) n
