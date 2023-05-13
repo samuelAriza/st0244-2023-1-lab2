@@ -31,10 +31,10 @@ constR :: Nat -> Nat
 constR m = recNat (Succ Zero) (\_ y -> Succ Zero) m
 
 --multiplication function
-mult :: Nat -> Nat -> Nat
-mult Zero _ = Zero
-mult _ Zero = Zero
-mult (Succ m) n = addR n (mult n m)
+multP :: Nat -> Nat -> Nat
+multP Zero _ = Zero
+multP _ Zero = Zero
+multP (Succ m) n = addR n (multP n m)
 
 multR :: Nat -> Nat -> Nat
 multR m n = recNat Zero (\_ y -> addR n y) m
@@ -48,3 +48,18 @@ expP m (Succ n) = multR m (expP m n)
 
 expR :: Nat -> Nat -> Nat
 expR m n = recNat (Succ Zero) (\_ y -> multR m y) n
+
+--factorial function
+factP :: Nat -> Nat
+factP Zero = Succ Zero
+factP (Succ m) = multR (Succ m) (factP m)
+
+
+
+
+
+
+
+
+
+
