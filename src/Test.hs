@@ -24,6 +24,13 @@ prop_constR n = natToNatural (constR (naturalToNat n)) == natToNatural (Succ Zer
 prop_multR :: Natural -> Natural -> Bool
 prop_multR m n = natToNatural (multR (naturalToNat m) (naturalToNat n)) == m * n
 
+prop_expR :: Natural -> Natural -> Bool
+prop_expR m n = natToNatural (expR (naturalToNat m) (naturalToNat n)) == m ^ n
+
+prop_factR :: Natural -> Bool
+prop_factR m = factR (naturalToNat m) == product [1..m]
+
+
 
 
 main :: IO()
