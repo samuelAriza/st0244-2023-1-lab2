@@ -12,7 +12,7 @@ addP Zero n = n
 addP (Succ m) n = Succ (addP m n)
 
 addR :: Nat -> Nat -> Nat
-addR m n = recNat n (\_ y -> Succ y) n
+addR m n = recNat n (\_ y -> Succ y) m
 
 --identity function
 idP :: Nat -> Nat
@@ -34,7 +34,23 @@ constR m = recNat (Succ Zero) (\_ y -> Succ Zero) m
 mult :: Nat -> Nat -> Nat
 mult Zero _ = Zero
 mult _ Zero = Zero
-mult (Succ m) n = addP n (mult n m)
+mult (Succ m) n = addR n (mult n m)
 
 multR :: Nat -> Nat -> Nat
-multR m n = recNat Zero (\_ y -> addP n y) m
+multR m n = recNat Zero (\_ y -> addR n y) m
+
+
+--exponentiation function
+exp :: Nat -> Nat -> Nat
+exp Zero _ = Zero
+exp _ Zero = Succ Zero
+
+
+
+
+
+
+
+
+
+
