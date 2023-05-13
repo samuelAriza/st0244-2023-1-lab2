@@ -54,12 +54,5 @@ factP :: Nat -> Nat
 factP Zero = Succ Zero
 factP (Succ m) = multR (Succ m) (factP m)
 
-
-
-
-
-
-
-
-
-
+factR :: Nat -> Nat
+factR m = recNat (Succ Zero) (\x y -> multR (addR x (Succ Zero)) y) m
