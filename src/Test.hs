@@ -30,6 +30,9 @@ prop_expR m n = natToNatural (expR (naturalToNat m) (naturalToNat n)) == m ^ n
 prop_factR :: Natural -> Bool
 prop_factR m = natToNatural (factR (naturalToNat m)) == product [1..m]
 
+prop_factP :: Natural -> Bool
+prop_factP m = natToNatural (factP (naturalToNat m)) == product [1..m]
+
 prop_predR :: Natural -> Bool
 prop_predR m | m > 0 = natToNatural (predR (naturalToNat m)) == m-1
              | otherwise = natToNatural (predR (naturalToNat m)) == 0
