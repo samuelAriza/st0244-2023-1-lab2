@@ -28,12 +28,13 @@ previous result y m times, starting from Zero.-}
 multR :: Nat -> Nat -> Nat
 multR m n = recNat Zero (\_ y -> addR n y) m
 
-{- predR uses recNat to recursively return the previous result x without
+{-predR uses recNat to recursively return the previous result x without
  applying any operation.-}
 predR :: Nat -> Nat
 predR m = recNat Zero (\x _ -> x) m
 
-{-Uses recNat to recursively subtract 1 from the previous result y n times, starting from
+{-Uses recNat to recursively subtract 1 from the previous result y n times,
+starting from
 m.-}
 subR :: Nat -> Nat -> Nat
 subR m n = recNat m (\_ y -> predR y) n
